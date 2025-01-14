@@ -37,6 +37,8 @@ const register = async (req, res) => {
   if (!email || !password || !passwordCheck || !userName || !phoneNumber) {
     return res.status(400).json({ msg: "Not all fields have been entered." });
   }
+  if (phoneNumber.length != "11")
+    return res.status(400).json({ msg: "Please enter a valid phone number" });
   if (password.length < 5)
     return res
       .status(400)
